@@ -138,6 +138,7 @@ return [
 
     'providers' => [
 
+        Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Laravel Framework Service Providers...
          */
