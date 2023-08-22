@@ -28,10 +28,7 @@ class AuthController extends Controller
 
     public function login(LoginFormRequest $request)
     {
-        if (auth()->attempt([
-            "email" => $request->email,
-            "password" => $request->password
-        ])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return redirect()->intended('/');
         } else {
             return redirect('/login')->with([
