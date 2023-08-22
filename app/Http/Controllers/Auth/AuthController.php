@@ -28,13 +28,14 @@ class AuthController extends Controller
 
     public function login(LoginFormRequest $request)
     {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('/')->with([
-                "success" => __("welcome to our website"),
-            ]);
+        if (auth()->attempt([
+            "email" => $request->email,
+            "password" => $request->password
+        ])) {
+            return redirect()->intended('/');
         } else {
-            return redirect()->back()->with([
-                "error" => __('Invalid credentials')
+            return redirect('/login')->with([
+                "error" => "these information do not match any one of our records"
             ]);
         }
     }
