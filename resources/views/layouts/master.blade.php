@@ -26,6 +26,7 @@
 		<link rel="stylesheet" href="{{ asset('job-assets/assets/css/responsive.css') }}">
         <!-- Title CSS -->
         <title>Jovie - Job Board & Portal HTML Template</title>
+        @yield("style")
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{{ asset('job-assets/assets/img/favicon.png') }}">
     </head>
@@ -57,6 +58,8 @@
 
         @include("layouts.navbar")
 
+        @include("messages.messages")
+        
         @yield("content")
 
         @include("layouts.footer")
@@ -66,7 +69,7 @@
 			<i class='bx bx-chevrons-up bx-fade-up'></i>
 		</div>
 		<!-- Back To Top End -->
-
+        @yield("script")
 		<!-- jQuery first, then Bootstrap JS -->
 		<script src="{{ asset('job-assets/assets/js/jquery.min.js') }}"></script>
 		<script src="{{ asset('job-assets/assets/js/bootstrap.bundle.min.js') }}"></script>
