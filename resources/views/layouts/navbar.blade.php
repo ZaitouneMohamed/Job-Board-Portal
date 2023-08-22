@@ -3,7 +3,7 @@
     <!-- Menu For Mobile Device -->
     <div class="mobile-nav">
         <a href="index.html" class="logo">
-            <img src="assets/img/logo.png" alt="logo">
+            <img src="{{ asset('job-assets/assets/img/logo.png') }}" alt="logo">
         </a>
     </div>
 
@@ -12,7 +12,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <a class="navbar-brand" href="index.html">
-                    <img src="assets/img/logo.png" alt="logo">
+                    <img src="{{ asset('job-assets/assets/img/logo.png') }}" alt="logo">
                 </a>
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav m-auto">
