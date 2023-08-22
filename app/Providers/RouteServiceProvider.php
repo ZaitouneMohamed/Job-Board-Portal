@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * The controller namespace for the application.
@@ -35,18 +35,52 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->configureRateLimiting();
+        parent::boot();
+        // $this->configureRateLimiting();
 
-        $this->routes(function () {
-            Route::prefix('api')
-                ->middleware('api')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/api.php'));
+        // $this->routes(function () {
+        //     Route::prefix('api')
+        //         ->middleware('api')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/api.php'));
 
-            Route::middleware('web')
-                ->namespace($this->namespace)
-                ->group(base_path('routes/web.php'));
-        });
+        //     Route::middleware('web')
+        //         ->namespace($this->namespace)
+        //         ->group(base_path('routes/web.php'));
+        // });
+    }
+    public function map(){
+        $this->mapAdminRoutes();
+        $this->mapWebRoutes();
+        $this->mapAdminRoutes();
+        $this->mapAuthRoutes();
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
+    protected function mapAdminRoutes()
+    {
+        Route::prefix('admin')
+            ->middleware(['auth','role:admin'])
+            ->namespace($this->namespace)
+            ->group(base_path('routes/admin.php'));
+    }
+    protected function mapAuthRoutes()
+    {
+        Route::prefix('auth')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/auth.php'));
     }
 
     /**
