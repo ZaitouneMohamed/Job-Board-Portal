@@ -79,6 +79,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapAuthRoutes()
     {
         Route::prefix('auth')
+            ->middleware("web")
             ->namespace($this->namespace)
             ->group(base_path('routes/auth.php'));
     }
