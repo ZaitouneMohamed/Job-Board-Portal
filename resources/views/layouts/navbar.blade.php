@@ -50,11 +50,11 @@
 
                     <div class="other-option">
                         @guest
-                            <a href="{{ route('register') }}" class="signup-btn">Sign Up</a>
-                            <a href="{{ route('login') }}" class="signin-btn">Sign In</a>
+                            <a href="{{ route('auth.register') }}" class="signup-btn">Sign Up</a>
+                            <a href="{{ route('auth.login') }}" class="signin-btn">Sign In</a>
                         @endguest
                         @auth
-                            <a href="{{ route('register') }}" class="signin-btn">Profile</a>
+                            <a href="{{ route('auth.profile') }}" class="signin-btn">Profile</a>
                         @endauth
                     </div>
                 </div>

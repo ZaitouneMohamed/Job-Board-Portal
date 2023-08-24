@@ -16,7 +16,7 @@ Route::controller(AuthController::class)->group(function () {
 
     Route::middleware("auth")->group(function(){
         Route::get("profile", "profile")->name("profile");
-        Route::post("logout", "logout")->name("logout");
+        Route::get("logout", "logout")->name("logout");
     });
 
 });
