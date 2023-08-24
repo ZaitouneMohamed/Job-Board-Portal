@@ -27,6 +27,7 @@
         <!-- Title CSS -->
         <title>Jovie - Job Board & Portal HTML Template</title>
         @yield("style")
+        <script src="//unpkg.com/alpinejs" defer></script>
         <!-- Favicon -->
         <link rel="icon" type="image/png" href="{{ asset('job-assets/assets/img/favicon.png') }}">
     </head>
@@ -59,7 +60,7 @@
         @include("layouts.navbar")
 
         @include("messages.messages")
-        
+
         @yield("content")
 
         @include("layouts.footer")

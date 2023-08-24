@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
-                    <form class="signup-form" action="{{route('register')}}" method="POST">
+                    <form class="signup-form" action="{{route('auth.register')}}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Enter Username</label>
