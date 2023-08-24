@@ -14,21 +14,27 @@
                 </a>
             </li>
             <li>
-                <a href="resume.html">
+                <a href="{{ route('auth.experience.index') }}">
                     <i class='bx bxs-file-doc'></i>
-                    My Resume
+                    Experience
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('auth.education.index') }}">
                     <i class='bx bx-briefcase'></i>
-                    Applied Job
+                    Education
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('auth.skills.index') }}">
+                    <i class='bx bx-envelope'></i>
+                    skills
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class='bx bx-envelope'></i>
-                    Messages
+                    <i class='bx bx-heart'></i>
+                    Aplied Jobs
                 </a>
             </li>
             <li>
@@ -50,7 +56,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{route('auth.logout')}}">
+                <a href="{{ route('auth.logout') }}">
                     <i class='bx bx-log-out'></i>
                     Log Out
                 </a>

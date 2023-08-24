@@ -2,6 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\user\Education;
+use App\Models\user\Experience;
+use App\Models\user\Profile;
+use App\Models\user\Skill;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -44,4 +48,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function Profile()
+    {
+        return $this->hasOne(Profile::class);
+    }
+    public function Experience()
+    {
+        return $this->hasMany(Experience::class);
+    }
+    public function Skills()
+    {
+        return  $this->hasMany(Skill::class);
+    }
+
+    public function Education()
+    {
+        return $this->hasMany(Education::class);
+    }
 }
