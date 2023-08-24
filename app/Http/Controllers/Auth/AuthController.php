@@ -62,6 +62,7 @@ class AuthController extends Controller
 
     public function Profile()
     {
+        return view('auth.profile.profile');
     }
 
     // forget password functions start
