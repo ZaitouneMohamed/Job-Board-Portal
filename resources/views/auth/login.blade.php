@@ -27,7 +27,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-3">
-                    <form class="signin-form" action="{{ route('login') }}" method="POST">
+                    <form class="signin-form" action="{{ route('auth.login') }}" method="POST">
                         @csrf
                         <div class="form-group">
                             <label>Enter Email</label>
@@ -67,7 +67,7 @@
                         </div>
                         <div class="create-btn text-center">
                             <p>Not have an account?
-                                <a href="{{route('register')}}">
+                                <a href="{{route('auth.register')}}">
                                     Create an account
                                     <i class='bx bx-chevrons-right bx-fade-right'></i>
                                 </a>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="create-btn text-center">
                             <p>Forget Password
-                                <a href="{{route('register')}}">
+                                <a href="{{route('auth.register')}}">
                                     reset password
                                     <i class='bx bx-chevrons-right bx-fade-right'></i>
                                 </a>
