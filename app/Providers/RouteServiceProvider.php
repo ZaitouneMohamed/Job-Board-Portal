@@ -80,6 +80,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::prefix('auth')
             ->middleware("web")
+            ->name("auth.")
             ->namespace($this->namespace)
             ->group(base_path('routes/auth.php'));
     }
