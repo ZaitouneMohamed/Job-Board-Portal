@@ -23,6 +23,8 @@ Route::controller(AuthController::class)->group(function () {
     });
 });
 
-Route::resource("experience", ExperienceController::class);
-Route::resource("education", EducationController::class);
-Route::resource("skills", SkillController::class);
+Route::middleware(["auth", "role:user"])->group(function () {
+    Route::resource("experience", ExperienceController::class);
+    Route::resource("education", EducationController::class);
+    Route::resource("skills", SkillController::class);
+});
