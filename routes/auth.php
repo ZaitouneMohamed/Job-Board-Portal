@@ -32,5 +32,4 @@ Route::middleware(["auth", "role:user"])->group(function () {
 });
 Route::middleware(["auth", "role:fournisseur"])->group(function () {
     Route::resource("companie", CompanyController::class);
-    Route::resource("annonces", AnnonceController::class);
 });

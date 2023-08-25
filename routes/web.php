@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\fournisseur\AnnonceController;
 use App\Http\Controllers\HomeController as ControllersHomeController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -24,3 +25,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get("favorite-annonces", "MyFavoritesAnnonce")->prefix("auth")->name("favorites");
     });
 });
+
+Route::resource("annonces", AnnonceController::class);
+
