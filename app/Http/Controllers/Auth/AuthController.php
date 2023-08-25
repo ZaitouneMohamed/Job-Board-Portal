@@ -41,15 +41,12 @@ class AuthController extends Controller
     {
         $user = User::create([
             "username" => $request->username,
-            "first_name" => $request->first_name,
-            "last_name" => $request->last_name,
-            "phone" => $request->phone,
             "email" => $request->email,
             "password" => Hash::make($request->password)
-        ]);
+        ])->assignRole($request->role);
         Auth::login($user);
         // $user->notify(new WelcomeEmail());
-        return redirect()->intended('/')->with([
+        return redirect()->intended('/auth/profile')->with([
             "success" => __("Registration successful. You can now log-in.")
         ]);
     }
@@ -62,7 +59,8 @@ class AuthController extends Controller
 
     public function Profile()
     {
-        return view('auth.profile.profile');
+        $user = Auth::user();
+        return view('auth.profile.profile',compact("user"));
     }
 
     // forget password functions start
