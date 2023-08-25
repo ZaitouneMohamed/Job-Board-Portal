@@ -33,6 +33,6 @@ class UsersSeeder extends Seeder
             'email' => "fournisseur@email.com",
             'email_verified_at' => now(),
             'password' => Hash::make("password"),
-        ])->assignRole('user');
+        ])->assignRole('fournisseur');
     }
 }
