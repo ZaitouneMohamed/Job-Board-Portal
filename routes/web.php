@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController as ControllersHomeController;
+use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',[ControllersHomeController::class,'index']);
+
+Route::middleware(['auth', 'role:user'])->group(function () {
+
+    Route::controller(HomeController::class)->name("user.")->group(function () {
+        Route::get("pending-annonces", "MyAplliedAnnonce")->prefix("auth")->name("applied");
+        Route::get("favorite-annonces", "MyFavoritesAnnonce")->prefix("auth")->name("favorites");
+    });
 });
