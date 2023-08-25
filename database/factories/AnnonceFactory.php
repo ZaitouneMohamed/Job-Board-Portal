@@ -19,11 +19,11 @@ class AnnonceFactory extends Factory
     public function definition()
     {
         return [
-            "title" => fake()->title(),
-            "type" => fake()->numberBetween(1,2),
-            'user_id' =>3 ,
-            'companie_id' =>$this->faker->randomElement([Company::factory()]) ,
-            'categorie_id' =>$this->faker->randomElement([Categorie::factory()]) ,
+            "title" => fake()->word(),
+            "type" => fake()->numberBetween(1, 2),
+            'user_id' => fake()->numberBetween(3, 4),
+            'companie_id' => $this->faker->randomElement([Company::factory()]),
+            'categorie_id' => $this->faker->randomElement([Categorie::factory()]),
             "description" => fake()->text(),
             "location" => fake()->city(),
             "statue" => 1,

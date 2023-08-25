@@ -19,4 +19,19 @@ class Annonce extends Model
         'statue',
         'categorie_id',
     ];
+
+    public function categorie()
+    {
+        return     $this->belongsTo(Categorie::class);
+    }
+
+    public function user()
+    {
+        return     $this->belongsTo(User::class);
+    }
+
+    public function Companie()
+    {
+        return     $this->belongsTo(Company::class);
+    }
 }
