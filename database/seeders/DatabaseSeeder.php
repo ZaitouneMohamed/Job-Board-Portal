@@ -25,5 +25,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\Categorie::factory(10)->create();
         \App\Models\Annonce::factory(20)->create();
         $this->call(AnnonceAplliedFaker::class);
+        $this->call(AnnonceFavoriteFaker::class);
     }
 }

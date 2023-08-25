@@ -18,13 +18,23 @@ class AnnonceFactory extends Factory
      */
     public function definition()
     {
+        $numItems = rand(3, 8);
+
+        // Generate fake <ul> and <li> elements
+        $fakeList = '<ul>';
+        for ($i = 0; $i < $numItems; $i++) {
+            $fakeList .= '<li>' . fake()->sentence() . '</li>';
+        }
+        $fakeList .= '</ul>';
         return [
-            "title" => fake()->word(),
+            "title" => fake()->jobTitle(),
             "type" => fake()->numberBetween(1, 2),
             'user_id' => fake()->numberBetween(3, 4),
-            'companie_id' => $this->faker->randomElement([Company::factory()]),
+            'salary' => fake()->numberBetween(1000, 1500) . '-' . fake()->numberBetween(1500, 2000),
+            'company_id' => $this->faker->randomElement([Company::factory()]),
             'categorie_id' => $this->faker->randomElement([Categorie::factory()]),
-            "description" => fake()->text(),
+            "description" => $fakeList,
+            "requirement" => $fakeList,
             "location" => fake()->city(),
             "statue" => 1,
 

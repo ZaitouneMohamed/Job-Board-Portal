@@ -14,7 +14,13 @@ class Company extends Model
         'name',
         'description',
         'start_date',
+        'location',
         'site_url',
         'phone_number',
     ];
+
+    public function Annonces()
+    {
+        return     $this->hasMany(Annonce::class);
+    }
 }

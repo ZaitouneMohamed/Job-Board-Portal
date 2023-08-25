@@ -45,6 +45,10 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Annonce::class, 'annonce_apllied', 'user_id', 'annonce_id');
     }
+    public function FavoriteAnnonces()
+    {
+        return $this->belongsToMany(Annonce::class, 'annonce_apllied', 'user_id', 'annonce_id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

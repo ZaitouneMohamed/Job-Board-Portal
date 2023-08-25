@@ -17,9 +17,10 @@ class CompanyFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 3,
+            'user_id' => fake()->numberBetween(4, 5),
             'name' => fake()->company(),
             'description' => fake()->text(),
+            'location' => fake()->city(),
             'start_date' => fake()->date(),
             'site_url' => fake()->url(),
             'phone_number' => fake()->phoneNumber(),

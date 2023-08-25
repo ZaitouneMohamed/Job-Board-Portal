@@ -16,12 +16,14 @@ return new class extends Migration
         Schema::create('annonces', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->string("salary");
             $table->bigInteger("user_id")->unsigned();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");
             $table->integer("type");
-            $table->bigInteger("companie_id")->unsigned();
-            $table->foreign("companie_id")->references("id")->on("companies")->onDelete("cascade");
+            $table->bigInteger("company_id")->unsigned();
+            $table->foreign("company_id")->references("id")->on("companies")->onDelete("cascade");
             $table->text("description");
+            $table->text("requirement");
             $table->string("location");
             $table->integer("statue");
             $table->bigInteger("categorie_id")->unsigned();

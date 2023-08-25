@@ -17,7 +17,8 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            "name"=>fake()->word()
+            "name" => fake()->word(),
+            'icon_class' => "flaticon-graduation-cap",
         ];
     }
 }
