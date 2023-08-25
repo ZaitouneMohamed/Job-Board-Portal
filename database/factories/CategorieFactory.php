@@ -17,7 +17,7 @@ class CategorieFactory extends Factory
     public function definition()
     {
         return [
-            "name"=>fake()->sentence()
+            "name"=>fake()->word()
         ];
     }
 }

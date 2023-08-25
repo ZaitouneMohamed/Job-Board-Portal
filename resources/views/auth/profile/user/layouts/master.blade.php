@@ -90,6 +90,12 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{ route('auth.annonces.index') }}">
+                        <i class='bx bx-user'></i>
+                        My Annonce
+                    </a>
+                </li>
+                <li>
                     <a href="{{ route('auth.logout') }}">
                         <i class='bx bx-log-out'></i>
                         Log Out

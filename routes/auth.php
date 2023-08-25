@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\fournisseur\AnnonceController;
 use App\Http\Controllers\fournisseur\CompanyController;
 use App\Http\Controllers\user\EducationController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,5 @@ Route::middleware(["auth", "role:user"])->group(function () {
 });
 Route::middleware(["auth", "role:fournisseur"])->group(function () {
     Route::resource("companie", CompanyController::class);
+    Route::resource("annonces", AnnonceController::class);
 });
