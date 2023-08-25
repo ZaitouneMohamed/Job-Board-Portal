@@ -28,10 +28,10 @@ class AppServiceProvider extends ServiceProvider
         Paginator::useBootstrap();
 
         Blade::if("user",function(){
-            return auth()->user()->hasRole('user');
+            return auth()->user()->isUser();
         });
         Blade::if("fournisseur",function(){
-            return auth()->user()->hasRole('fournisseur');
+            return auth()->user()->isFournisseur();
         });
     }
 }
