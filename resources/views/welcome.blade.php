@@ -116,85 +116,17 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-accounting'></i>
-                            <h3>Accountancy</h3>
-                            <p>301 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-graduation-cap'></i>
-                            <h3>Education</h3>
-                            <p>210 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-wrench-and-screwdriver-in-cross'></i>
-                            <h3>Automotive Jobs</h3>
-                            <p>281 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-consultation'></i>
-                            <h3>Business</h3>
-                            <p>122 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-heart'></i>
-                            <h3>Health Care</h3>
-                            <p>335 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3  col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-computer'></i>
-                            <h3>IT & Agency</h3>
-                            <p>401 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3  col-md-4 col-sm-6 offset-md-2 offset-lg-0">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-worker'></i>
-                            <h3>Engineering</h3>
-                            <p>100 open position</p>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <a href="job-list.html">
-                        <div class="category-card">
-                            <i class='flaticon-auction'></i>
-                            <h3>Legal</h3>
-                            <p>201 open position</p>
-                        </div>
-                    </a>
-                </div>
+                @foreach ($topCategories as $item)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <a href="job-list.html">
+                            <div class="category-card">
+                                <i class='{{ $item->icon_class }}'></i>
+                                <h3>{{ $item->name }}</h3>
+                                <p>{{ $item->annonces_count }} open position</p>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -210,245 +142,63 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-md-1">
-                                <div class="company-logo">
-                                    <a href="job-details.html">
-                                        <img src="{{ asset('job-assets/assets/img/company-logo/1.png') }}" alt="logo">
-                                    </a>
+                @foreach ($annonces as $item)
+                    <div class="col-md-6">
+                        <div class="job-card">
+                            <div class="row align-items-center">
+                                <div class="col-lg-3">
+                                    <div class="thumb-img">
+                                        <a href="job-details.html">
+                                            <img src="{{ asset('job-assets/assets/img/company-logo/1.png') }}"
+                                                alt="company logo">
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="job-info">
-                                    <h3>
-                                        <a href="job-details.html">Web Designer, Graphic Designer, UI/UX Designer</a>
-                                    </h3>
-                                    <ul>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            Graphics Designer
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            $35000-$38000
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-location-plus'></i>
-                                            Wellesley Rd, London
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-stopwatch'></i>
-                                            9 days ago
-                                        </li>
-                                    </ul>
 
-                                    <span>Full Time</span>
+                                <div class="col-lg-6">
+                                    <div class="job-info">
+                                        <h3>
+                                            <a href="job-details.html">{{ $item->title }}</a>
+                                        </h3>
+                                        <ul>
+                                            <li>Via <a href="#">{{ $item->user->username }}</a></li>
+                                            <li>
+                                                <i class='bx bx-location-plus'></i>
+                                                {{ $item->location }}
+                                            </li>
+                                            <li>
+                                                <i class='bx bx-filter-alt'></i>
+                                                {{ $item->categorie->name }}
+                                            </li>
+                                            <li>
+                                                <i class='bx bx-briefcase'></i>
+                                                {{ $item->salary }}
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="theme-btn text-end">
-                                    <a href="#" class="default-btn">
-                                        Browse Job
-                                    </a>
+
+                                <div class="col-lg-3">
+                                    <div class="job-save">
+                                        <span>{{ $item->type }}</span>
+                                        <a href="#">
+                                            <i class='bx bx-heart'></i>
+                                        </a>
+                                        <p>
+                                            <i class='bx bx-stopwatch'></i>
+                                            {{ $item->created_at }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-md-1">
-                                <div class="company-logo">
-                                    <a href="job-details.html">
-                                        <img src="{{ asset('job-assets/assets/img/company-logo/2.png') }}" alt="logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="job-info">
-                                    <h3>
-                                        <a href="#">Website Developer & Software Developer</a>
-                                    </h3>
-                                    <ul>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            Web Developer
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            $3000-$8000
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-location-plus'></i>
-                                            Garden Road, UK
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-stopwatch'></i>
-                                            5 days ago
-                                        </li>
-                                    </ul>
-
-                                    <span>Full Time</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="theme-btn text-end">
-                                    <a href="#" class="default-btn">
-                                        Browse Job
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-md-1">
-                                <div class="company-logo">
-                                    <a href="job-details.html">
-                                        <img src="{{ asset('job-assets/assets/img/company-logo/3.png') }}" alt="logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="job-info">
-                                    <h3>
-                                        <a href="job-details.html">Application Developer & Web Designer</a>
-                                    </h3>
-                                    <ul>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            App Developer
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            $3000-$4000
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-location-plus'></i>
-                                            State City, USA
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-stopwatch'></i>
-                                            8 days ago
-                                        </li>
-                                    </ul>
-
-                                    <span>Part-Time</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="theme-btn text-end">
-                                    <a href="job-details.html" class="default-btn">
-                                        Browse Job
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-md-1">
-                                <div class="company-logo">
-                                    <a href="job-details.html">
-                                        <img src="{{ asset('job-assets/assets/img/company-logo/4.png') }}" alt="logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="job-info">
-                                    <h3>
-                                        <a href="job-details.html">Frontend & Backend Developer</a>
-                                    </h3>
-                                    <ul>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            Web Developer
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            $5000-$8000
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-location-plus'></i>
-                                            Drive Post NY 676
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-stopwatch'></i>
-                                            1 days ago
-                                        </li>
-                                    </ul>
-
-                                    <span>Full Time</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="theme-btn text-end">
-                                    <a href="job-details.html" class="default-btn">
-                                        Browse Job
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-12">
-                    <div class="job-card-two">
-                        <div class="row align-items-center">
-                            <div class="col-md-1">
-                                <div class="company-logo">
-                                    <a href="job-details.html">
-                                        <img src="{{ asset('job-assets/assets/img/company-logo/5.png') }}" alt="logo">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-8">
-                                <div class="job-info">
-                                    <h3>
-                                        <a href="job-details.html">IT Department & Manager</a>
-                                    </h3>
-                                    <ul>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            Manager
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-briefcase'></i>
-                                            $35000-$38000
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-location-plus'></i>
-                                            Wellesley Rd, London
-                                        </li>
-                                        <li>
-                                            <i class='bx bx-stopwatch'></i>
-                                            7 days ago
-                                        </li>
-                                    </ul>
-
-                                    <span>Full Time</span>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="theme-btn text-end">
-                                    <a href="job-details.html" class="default-btn">
-                                        Browse Job
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            </div>
+            <div class="theme-btn text-center">
+                <a href="#" class="default-btn">
+                    Browse More Job
+                </a>
             </div>
         </div>
     </section>
@@ -464,85 +214,27 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-3 col-sm-6">
-                    <div class="company-card">
-                        <div class="company-logo">
-                            <a href="job-grid.html">
-                                <img src="{{ asset('job-assets/assets/img/top-company/1.png') }}" alt="company logo">
-                            </a>
-                        </div>
-                        <div class="company-text">
-                            <h3>Trophy & Sans</h3>
-                            <p>
-                                <i class='bx bx-location-plus'></i>
-                                Green Lanes, London
-                            </p>
-                            <a href="job-grid.html" class="company-btn">
-                                25 Open Position
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="company-card">
-                        <div class="company-logo">
-                            <a href="job-grid.html">
-                                <img src="{{ asset('job-assets/assets/img/top-company/2.png') }}" alt="company logo">
-                            </a>
-                        </div>
-                        <div class="company-text">
-                            <h3>Trout Design</h3>
-                            <p>
-                                <i class='bx bx-location-plus'></i>
-                                Park Avenue, Mumbai
-                            </p>
-                            <a href="job-grid.html" class="company-btn">
-                                35 Open Position
-                            </a>
+                @foreach ($companies as $item)
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="company-card">
+                            <div class="company-logo">
+                                <a href="job-grid.html">
+                                    <img src="{{ asset('job-assets/assets/img/top-company/1.png') }}" alt="company logo">
+                                </a>
+                            </div>
+                            <div class="company-text">
+                                <h3>{{ $item->name }}</h3>
+                                <p>
+                                    <i class='bx bx-location-plus'></i>
+                                    {{ $item->location }}
+                                </p>
+                                <a href="#" class="company-btn">
+                                    {{ $item->Annonces->count() }} Open Position
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="company-card">
-                        <div class="company-logo">
-                            <a href="job-grid.html">
-                                <img src="{{ asset('job-assets/assets/img/top-company/3.png') }}" alt="company logo">
-                            </a>
-                        </div>
-                        <div class="company-text">
-                            <h3>Resland LTD</h3>
-                            <p>
-                                <i class='bx bx-location-plus'></i>
-                                Betas Quence, London
-                            </p>
-                            <a href="job-grid.html" class="company-btn">
-                                20 Open Position
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-sm-6">
-                    <div class="company-card">
-                        <div class="company-logo">
-                            <a href="job-grid.html">
-                                <img src="{{ asset('job-assets/assets/img/top-company/4.png') }}" alt="company logo">
-                            </a>
-                        </div>
-                        <div class="company-text">
-                            <h3>Lawn Hopper</h3>
-                            <p>
-                                <i class='bx bx-location-plus'></i>
-                                Wellesley Rd, London
-                            </p>
-                            <a href="job-grid.html" class="company-btn">
-                                45 Open Position
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
@@ -559,8 +251,7 @@
                             <div class="media-body">
                                 <h5 class="mt-0">Looking For a Job</h5>
                                 <p>Your next role could be with one of these top leading organizations</p>
-
-                                <a href="job-list.html">
+                                <a href="#">
                                     Apply Now
                                     <i class='bx bx-chevrons-right'></i>
                                 </a>
@@ -576,8 +267,7 @@
                             <div class="media-body">
                                 <h5 class="mt-0">Are You Recruiting?</h5>
                                 <p>Your next role could be with one of these top leading organizations</p>
-
-                                <a href="post-job.html">
+                                <a href="#">
                                     Apply Now
                                     <i class='bx bx-chevrons-right'></i>
                                 </a>
@@ -590,7 +280,7 @@
     </div>
     <!-- Job Info Section End -->
 
-    <!-- Candidate Section Start -->
+    {{-- <!-- Candidate Section Start -->
     <section class="candidate-section ptb-100">
         <div class="container">
             <div class="section-title text-center">
@@ -602,7 +292,7 @@
             <div class="condidate-slider owl-carousel owl-theme">
                 <div class="condidate-item">
                     <div class="candidate-img">
-                        <img src="assets/img/candidate/1.jpg" alt="candidate image">
+                        <img src="{{ asset('job-assets/assets/img/candidate/1.jpg') }}" alt="candidate image">
                     </div>
                     <div class="candidate-social">
                         <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -636,7 +326,7 @@
 
                 <div class="condidate-item">
                     <div class="candidate-img">
-                        <img src="assets/img/candidate/2.jpg" alt="candidate image">
+                        <img src="{{ asset('job-assets/assets/img/candidate/2.jpg') }}" alt="candidate image">
                     </div>
                     <div class="candidate-social">
                         <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -670,7 +360,7 @@
 
                 <div class="condidate-item">
                     <div class="candidate-img">
-                        <img src="assets/img/candidate/3.jpg" alt="candidate image">
+                        <img src="{{ asset('job-assets/assets/img/candidate/3.jpg') }} " alt="candidate image">
                     </div>
                     <div class="candidate-social">
                         <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -704,7 +394,7 @@
 
                 <div class="condidate-item">
                     <div class="candidate-img">
-                        <img src="assets/img/candidate/4.jpg" alt="candidate image">
+                        <img src="{{ asset('job-assets/assets/img/candidate/4.jpg') }}" alt="candidate image">
                     </div>
                     <div class="candidate-social">
                         <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -738,7 +428,7 @@
 
                 <div class="condidate-item">
                     <div class="candidate-img">
-                        <img src="assets/img/candidate/1.jpg" alt="candidate image">
+                        <img src="{{ asset('job-assets/assets/img/candidate/1.jpg') }}" alt="candidate image">
                     </div>
                     <div class="candidate-social">
                         <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
@@ -874,40 +564,32 @@
             </div>
         </div>
     </section>
-    <!-- Candidate Section End -->
+    <!-- Candidate Section End --> --}}
 
     <!-- Counter Section Start -->
     <div class="counter-section pt-100 pb-70">
         <div class="container">
             <div class="row counter-area">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <div class="counter-text">
                         <i class="flaticon-resume"></i>
-                        <h2><span>1225</span></h2>
+                        <h2><span>{{ \App\Models\Annonce::count() }}</span></h2>
                         <p>Job Posted</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
-                    <div class="counter-text">
-                        <i class="flaticon-recruitment"></i>
-                        <h2><span>145</span></h2>
-                        <p>Job Filed</p>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <div class="counter-text">
                         <i class="flaticon-portfolio"></i>
-                        <h2><span>170</span></h2>
+                        <h2><span>{{ \App\Models\Company::count() }}</span></h2>
                         <p>Company</p>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <div class="counter-text">
                         <i class="flaticon-employee"></i>
-                        <h2><span>125</span></h2>
+                        <h2><span>{{ \App\Models\User::count() }}</span></h2>
                         <p>Members</p>
                     </div>
                 </div>
