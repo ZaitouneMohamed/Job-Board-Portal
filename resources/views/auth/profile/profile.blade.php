@@ -37,7 +37,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Your Name</label>
-                                        <input type="text" value="{{ Auth()->user()->username }}" class="form-control"
+                                        <input type="text" value="{{ $user->username }}" class="form-control"
                                             placeholder="Your Name">
                                     </div>
                                 </div>
@@ -63,38 +63,53 @@
                                     <div class="form-group">
                                         <label>First name</label>
                                         <input type="text" class="form-control"
-                                            value="{{ Auth()->user()->Profile->first_name }}" placeholder="Your Country">
+                                            value="{{ $user->Profile ? $user->Profile->first_name : '' }}"
+                                            placeholder="Your Country">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>last name</label>
                                         <input type="text" class="form-control"
-                                            value="{{ Auth()->user()->Profile->last_name }}" placeholder="Your Country">
+                                            value="{{ $user->Profile ? $user->Profile->phone : '' }}"
+                                            placeholder="Your Country">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" value="{{ Auth()->user()->Profile->phone }}"
+                                        <input type="text" value="{{ $user->Profile ? $user->Profile->phone : '' }}"
                                             class="form-control" placeholder="Your Region">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>gender</label><br>
-                                        <select>
-                                            <option value="1" @if (Auth()->user()->Profile->gender === 1) selected @endif>Homme
-                                            </option>
-                                            <option value="2" @if (Auth()->user()->Profile->gender === 2) selected @endif>femme
-                                            </option>
-                                        </select>
+                                        @if ($user->Profile)
+                                            <select>
+                                                <Profile- value="1" @if ($user->Profile->gender === 1) selected @endif>
+                                                    Homme
+                                                </option>
+                                                <option value="2" @if ($user->Profile->gender === 2) selected @endif>
+                                                    femme
+                                                </option>
+                                            </select>
+                                        @else
+                                            <select>
+                                                <option value="1">
+                                                    Homme
+                                                </option>
+                                                <option value="2">
+                                                    femme
+                                                </option>
+                                            </select>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>description</label>
-                                        <textarea class="form-control" name="description" id="" cols="30" rows="10">{{ Auth()->user()->Profile->description }}</textarea>
+                                        <textarea class="form-control" name="description" id="" cols="30" rows="10">{{ $user->Profile ? $user->Profile->description : '' }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">

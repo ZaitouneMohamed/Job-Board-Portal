@@ -24,11 +24,22 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'first_name',
-        'last_name',
         'email',
         'password',
     ];
+
+    public function isAdmin()
+    {
+        return $this->hasRole('admin');
+    }
+    public function isUser()
+    {
+        return $this->hasRole('user');
+    }
+    public function isFournisseur()
+    {
+        return $this->hasRole('fournisseur');
+    }
 
     /**
      * The attributes that should be hidden for serialization.
