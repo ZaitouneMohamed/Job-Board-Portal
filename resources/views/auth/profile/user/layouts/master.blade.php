@@ -33,13 +33,13 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('user.applied') }}">
                         <i class='bx bx-heart'></i>
                         Aplied Jobs
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ route('user.favorites') }}">
                         <i class='bx bx-heart'></i>
                         Saved Jobs
                     </a>
