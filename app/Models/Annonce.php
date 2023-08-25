@@ -34,4 +34,8 @@ class Annonce extends Model
     {
         return     $this->belongsTo(Company::class);
     }
+    public function AppliedUsers()
+    {
+        return $this->belongsToMany(User::class, 'annonce_apllied', 'annonce_id', 'user_id');
+    }
 }

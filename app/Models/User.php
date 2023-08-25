@@ -41,6 +41,11 @@ class User extends Authenticatable
         return $this->hasRole('fournisseur');
     }
 
+    public function AppliedAnnonces()
+    {
+        return $this->belongsToMany(Annonce::class, 'annonce_apllied', 'user_id', 'annonce_id');
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *
