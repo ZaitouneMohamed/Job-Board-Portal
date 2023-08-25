@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AnnonceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(["auth", "role:fournisseur"])->except("show");
+    }
     /**
      * Display a listing of the resource.
      *
@@ -49,7 +53,8 @@ class AnnonceController extends Controller
      */
     public function show($id)
     {
-        //
+        $announce = Annonce::with("categorie", "Companie","user")->findOrFail($id);
+        return view('pages.viewAnnonce', compact('announce'));
     }
 
     /**
