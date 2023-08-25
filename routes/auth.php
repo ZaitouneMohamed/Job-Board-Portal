@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\fournisseur\CompanyController;
 use App\Http\Controllers\user\EducationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\user\ExperienceController;
@@ -27,4 +28,7 @@ Route::middleware(["auth", "role:user"])->group(function () {
     Route::resource("experience", ExperienceController::class);
     Route::resource("education", EducationController::class);
     Route::resource("skills", SkillController::class);
+});
+Route::middleware(["auth", "role:fournisseur"])->group(function () {
+    Route::resource("companie", CompanyController::class);
 });
