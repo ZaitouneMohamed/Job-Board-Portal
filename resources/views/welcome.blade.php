@@ -158,7 +158,8 @@
                                 <div class="col-lg-6">
                                     <div class="job-info">
                                         <h3>
-                                            <a href="{{ route('announce.show', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->title }}</a>
+                                            <a
+                                                href="{{ route('announce.show', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->title }}</a>
                                         </h3>
                                         <ul>
                                             <li>Via <a href="#">{{ $item->user->username }}</a></li>
@@ -181,9 +182,17 @@
                                 <div class="col-lg-3">
                                     <div class="job-save">
                                         <span>{{ $item->type }}</span>
-                                        <a href="#">
-                                            <i class='bx bx-heart'></i>
-                                        </a>
+                                        @auth
+                                        
+                                            <a
+                                                href="{{ route('user.toggle.favorite', ['user_id' => auth()->user()->id, 'announce_id' => $item->id]) }}">
+                                                <i class='bx bx-heart'
+                                                    @auth
+    @if (auth()->user()->FavoriteAnnonces->contains($item->id))
+                                                    style="background-color: red ;color: white"
+                                                    @endif @endauth></i>
+                                            </a>
+                                        @endauth
                                         <p>
                                             <i class='bx bx-stopwatch'></i>
                                             {{ $item->created_at }}
