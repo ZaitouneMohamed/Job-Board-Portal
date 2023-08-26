@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('annonces', function (Blueprint $table) {
             $table->id();
             $table->string("title");
+            $table->string("slug");
             $table->string("salary");
             $table->bigInteger("user_id")->unsigned();
             $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade");

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Categorie;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Annonce>
@@ -26,8 +27,10 @@ class AnnonceFactory extends Factory
             $fakeList .= '<li>' . fake()->sentence() . '</li>';
         }
         $fakeList .= '</ul>';
+        $title = fake()->jobTitle();
         return [
-            "title" => fake()->jobTitle(),
+            "title" => $title,
+            "slug" => Str::slug($title),
             "type" => fake()->numberBetween(1, 2),
             'user_id' => fake()->numberBetween(3, 4),
             'salary' => fake()->numberBetween(1000, 1500) . '-' . fake()->numberBetween(1500, 2000),
