@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\fournisseur\AnnonceController;
+use App\Http\Controllers\fournisseur\HomeController as FournisseurHomeController;
 use App\Http\Controllers\HomeController as ControllersHomeController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -26,5 +27,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('apply_job/{user_id}/apply_for_job', 'apply_job')->name('apply_job');
     });
 });
+Route::controller(ControllersHomeController::class)->group(function(){
+    Route::get('/announces/{id}-{title}', 'viewAnnonce')->name('announce.show');
+});
 
-Route::resource("annonces", AnnonceController::class);

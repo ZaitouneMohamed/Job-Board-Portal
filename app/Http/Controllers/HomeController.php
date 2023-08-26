@@ -20,6 +20,15 @@ class HomeController extends Controller
             ->orderByDesc('annonces_count')
             ->take(4)
             ->get();
-        return view('welcome', compact("topCategories", "annonces","companies"));
+        return view('welcome', compact("topCategories", "annonces", "companies"));
+    }
+
+    public function viewAnnonce($id, $title)
+    {
+        $announce = Annonce::find($id);
+        if ($announce->title === $title) {
+            return view('pages.viewAnnonce', compact("announce"));
+        }
+        return abort(404);
     }
 }
