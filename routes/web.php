@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[ControllersHomeController::class,'index']);
+Route::get('/', [ControllersHomeController::class, 'index']);
 
 Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::controller(HomeController::class)->name("user.")->group(function () {
-        Route::get("pending-annonces", "MyAplliedAnnonce")->prefix("auth")->name("applied");
-        Route::get("favorite-annonces", "MyFavoritesAnnonce")->prefix("auth")->name("favorites");
+        Route::get("pending-announces", "MyAplliedAnnonce")->prefix("auth")->name("applied");
+        Route::get("favorite-announces", "MyFavoritesAnnonce")->prefix("auth")->name("favorites");
+        Route::get('apply_job/{user_id}/apply_for_job', 'apply_job')->name('apply_job');
     });
 });
 
 Route::resource("annonces", AnnonceController::class);
-
