@@ -158,7 +158,7 @@
                                 <div class="col-lg-6">
                                     <div class="job-info">
                                         <h3>
-                                            {{-- <a href="{{ route('announce.show', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->title }}</a> --}}
+                                            <a href="{{ route('announce.show', ['id' => $item->id, 'slug' => $item->slug]) }}">{{ $item->title }}</a>
                                         </h3>
                                         <ul>
                                             <li>Via <a href="#">{{ $item->user->username }}</a></li>
