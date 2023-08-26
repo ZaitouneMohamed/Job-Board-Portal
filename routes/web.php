@@ -28,6 +28,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     });
 });
 Route::controller(ControllersHomeController::class)->group(function(){
-    Route::get('/announces/{id}-{title}', 'viewAnnonce')->name('announce.show');
+    Route::get('/announces/{id}-{slug}', 'viewAnnonce')->name('announce.show');
 });
 

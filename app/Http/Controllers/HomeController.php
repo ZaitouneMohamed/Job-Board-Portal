@@ -23,10 +23,10 @@ class HomeController extends Controller
         return view('welcome', compact("topCategories", "annonces", "companies"));
     }
 
-    public function viewAnnonce($id, $title)
+    public function viewAnnonce($id, $slug)
     {
         $announce = Annonce::find($id);
-        if ($announce->title === $title) {
+        if ($announce->slug === $slug) {
             return view('pages.viewAnnonce', compact("announce"));
         }
         return abort(404);
