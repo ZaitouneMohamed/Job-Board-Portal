@@ -51,10 +51,11 @@
                                         <div class="company-text">
                                             <h3>{{ $item->title }}</h3>
                                             <p>{{ $item->categorie->name }}</p>
-                                            <p>{{ $item->companie->name }}</p>
-                                            <p>{{ $item->AppliedUsers->count() }}</p>
+                                            {{-- <p>{{ $item->companie->name }}</p> --}}
+                                            <p>Applied : {{ $item->AppliedUsers->count() }}</p>
+                                            <p>saved : {{ $item->FavoritesUsers->count() }}</p>
                                             <p>
-                                                {{ Str::limit($item->description, 20, '...') }}
+                                                {!! Str::limit($item->description, 20, '...') !!}
                                             </p>
                                             <a href="#" class="company-btn">
                                                 20 Open Position
