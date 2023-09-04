@@ -21,13 +21,23 @@ class HomeController extends Controller
         return view('auth.profile.user.annonces.favorites', compact("annonces"));
     }
 
-    public function apply_job($job_id)
+    /**
+     * Apply for a job.
+     *
+     * @param int $job_id The ID of the job.
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function apply_job($user_id, $announce_id)
     {
-        $user = User::find(Auth::user());
-        $announcement = Annonce::find($job_id);
+        // Find the authenticated user.
+        $user = User::find($user_id);
+        // Find the announcement with the given job ID.
+        $announcement = Annonce::find($announce_id);
+        // Attach the announcement to the user's applied announcements.
         $user->AppliedAnnonces()->attach($announcement);
+        // Redirect back with a success message.
         return redirect()->back()->with([
-            "success" => "you applied successfully"
+            "success" => "You applied successfully."
         ]);
     }
 
@@ -35,8 +45,7 @@ class HomeController extends Controller
     {
         $user = User::find($user_id);
         $announcement = Annonce::find($announce_id);
-        if ($user->FavoriteAnnonces->contains($announce_id))
-        {
+        if ($user->FavoriteAnnonces->contains($announce_id)) {
             $user->FavoriteAnnonces()->detach($announcement);
         } else {
             $user->FavoriteAnnonces()->attach($announcement);
