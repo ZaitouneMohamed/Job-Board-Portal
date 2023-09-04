@@ -57,63 +57,62 @@
                         </form>
 
                         <h3>Profile</h3>
-                        <form class="-candidate-address">
+                        <form class="-candidate-address" method="POST" action="{{route('set.profile')}}">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>First name</label>
-                                        <input type="text" class="form-control"
+                                        <label>First name *</label>
+                                        <input type="text" class="form-control" name="first_name"
                                             value="{{ $user->Profile ? $user->Profile->first_name : '' }}"
-                                            placeholder="Your Country">
+                                            placeholder="Your first name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>last name</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ $user->Profile ? $user->Profile->phone : '' }}"
-                                            placeholder="Your Country">
+                                        <label>last name *</label>
+                                        <input type="text" class="form-control" name="last_name"
+                                            value="{{ $user->Profile ? $user->Profile->last_name : '' }}"
+                                            placeholder="Your last name">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Phone</label>
+                                        <label>Phone *</label>
                                         <input type="text" value="{{ $user->Profile ? $user->Profile->phone : '' }}"
-                                            class="form-control" placeholder="Your Region">
+                                            class="form-control" placeholder="Your phone" name="phone">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>gender</label><br>
-                                        @if ($user->Profile)
-                                            <select>
-                                                <Profile- value="1" @if ($user->Profile->gender === 1) selected @endif>
+                                        <label>gender *</label><br>
+                                        <select name="gender">
+                                            @if ($user->Profile)
+                                                <option value="1" @if ($user->Profile->gender === 1) selected @endif>
                                                     Homme
                                                 </option>
                                                 <option value="2" @if ($user->Profile->gender === 2) selected @endif>
                                                     femme
                                                 </option>
-                                            </select>
-                                        @else
-                                            <select>
+                                            @else
                                                 <option value="1">
                                                     Homme
                                                 </option>
                                                 <option value="2">
                                                     femme
                                                 </option>
-                                            </select>
-                                        @endif
+                                            @endif
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>description</label>
-                                        <textarea class="form-control" name="description" id="" cols="30" rows="10">{{ $user->Profile ? $user->Profile->description : '' }}</textarea>
+                                        <label>description *</label>
+                                        <textarea class="form-control" placeholder="description" name="description" id="" cols="30"
+                                            rows="10">{{ $user->Profile ? $user->Profile->description : '' }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button type="submit" class="account-btn">Edit</button>
                                     <button type="submit" class="account-btn">Save</button>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\fournisseur\AnnonceController;
 use App\Http\Controllers\fournisseur\HomeController as FournisseurHomeController;
 use App\Http\Controllers\HomeController as ControllersHomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\User\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +29,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         Route::get('toggle-favorite/{user_id}/{announce_id}', 'toggleFavorite')->name('toggle.favorite');
     });
 });
+
+Route::post('profile/set',ProfileController::class)->name("set.profile");
+
 Route::controller(ControllersHomeController::class)->group(function(){
     Route::get('/announces/{id}-{slug}', 'viewAnnonce')->name('announce.show');
 });
