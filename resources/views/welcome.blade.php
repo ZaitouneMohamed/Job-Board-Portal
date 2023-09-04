@@ -183,7 +183,7 @@
                                     <div class="job-save">
                                         <span>{{ $item->type }}</span>
                                         @auth
-                                        
+
                                             <a
                                                 href="{{ route('user.toggle.favorite', ['user_id' => auth()->user()->id, 'announce_id' => $item->id]) }}">
                                                 <i class='bx bx-heart'

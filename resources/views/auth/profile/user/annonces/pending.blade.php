@@ -31,13 +31,6 @@
                             <i class='bx bx-book-reader'></i>
                             My apliied annonce
                         </h3>
-                        <div x-data="{ open: false }">
-                            <button @click="open = !open">Expand</button>
-
-                            <span x-show="open">
-                                Content...
-                            </span>
-                        </div>
                         <table class="table table-hover table-striped-columns">
                             <thead>
                                 <tr>
@@ -45,7 +38,6 @@
                                     <th scope="col">Titre</th>
                                     <th scope="col">added at</th>
                                     <th scope="col">Categorie</th>
-                                    <th scope="col"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +47,6 @@
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->created_at }}</td>
                                         <td>{{ $item->categorie->name }}</td>
-                                        <td><i class="fa fa-heart" ></i></td>
                                     </tr>
                                 @endforeach
                             </tbody>
