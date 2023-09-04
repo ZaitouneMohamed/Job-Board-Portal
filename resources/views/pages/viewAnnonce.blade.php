@@ -120,7 +120,8 @@
                                         @if (auth()->user()->AppliedAnnonces->contains($announce->id))
                                             <h1>you already postuled on this job</h1>
                                         @else
-                                            <a href="{{ route('user.apply_job', $announce->id) }}" class="default-btn">
+                                            <a href="{{ route('user.apply_job', ['user_id' => auth()->user()->id, 'announce_id' => $announce->id]) }}"
+                                                class="default-btn">
                                                 Apply Now
                                             </a>
                                         @endif

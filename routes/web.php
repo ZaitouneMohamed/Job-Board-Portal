@@ -24,7 +24,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::controller(HomeController::class)->name("user.")->group(function () {
         Route::get("pending-announces", "MyAplliedAnnonce")->prefix("auth")->name("applied");
         Route::get("favorite-announces", "MyFavoritesAnnonce")->prefix("auth")->name("favorites");
-        Route::get('apply_job/{user_id}/apply_for_job', 'apply_job')->name('apply_job');
+        Route::get('apply_job/{user_id}/{announce_id}', 'apply_job')->name('apply_job');
         Route::get('toggle-favorite/{user_id}/{announce_id}', 'toggleFavorite')->name('toggle.favorite');
     });
 });
