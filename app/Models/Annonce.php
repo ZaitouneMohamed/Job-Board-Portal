@@ -47,12 +47,12 @@ class Annonce extends Model
     {
         return     $this->belongsTo(Company::class);
     }
-    public function AppliedUsers()
+    public function users()
     {
         return $this->belongsToMany(User::class, 'annonce_apllied', 'annonce_id', 'user_id');
     }
     public function FavoritesUsers()
     {
-        return $this->belongsToMany(User::class, 'annonce_apllied', 'annonce_id', 'user_id');
+        return $this->belongsToMany(User::class, 'annonce_favorite', 'annonce_id', 'user_id');
     }
 }

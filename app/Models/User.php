@@ -47,7 +47,7 @@ class User extends Authenticatable
     }
     public function FavoriteAnnonces()
     {
-        return $this->belongsToMany(Annonce::class, 'annonce_apllied', 'user_id', 'annonce_id');
+        return $this->belongsToMany(Annonce::class, 'annonce_favorite', 'user_id', 'annonce_id');
     }
 
     /**
