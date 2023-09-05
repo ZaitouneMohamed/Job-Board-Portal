@@ -183,14 +183,11 @@
                                     <div class="job-save">
                                         <span>{{ $item->type }}</span>
                                         @auth
-
-                                            <a
-                                                href="{{ route('user.toggle.favorite', ['user_id' => auth()->user()->id, 'announce_id' => $item->id]) }}">
-                                                <i class='bx bx-heart'
-                                                    @auth
-    @if (auth()->user()->FavoriteAnnonces->contains($item->id))
-                                                    style="background-color: red ;color: white"
-                                                    @endif @endauth></i>
+                                            <a >
+                                                <i class='bx bx-heart' id="{{ $item->id }}"
+                                                    {{-- onclick="clickButton({{ $item->id }})" --}}
+                                                    @if (auth()->user()->FavoriteAnnonces->contains($item->id)) style="background-color: red ;color: white" @endif>
+                                                </i>
                                             </a>
                                         @endauth
                                         <p>
@@ -786,4 +783,22 @@
         </div>
     </section>
     <!-- Blog Section End -->
+@endsection
+
+@section('script')
+    <script>
+        function clickButton(id) {
+            button = document.getElementById(id)
+            var computedStyle = window.getComputedStyle(button);
+
+            // Check if the background property is set in the computed style
+            if (computedStyle.getPropertyValue("background") === "red") {
+                // The button has a background
+                alert(id + " has a background.");
+            } else {
+                // The button does not have a background
+                alert(id + " does not have a background.");
+            }
+        }
+    </script>
 @endsection
