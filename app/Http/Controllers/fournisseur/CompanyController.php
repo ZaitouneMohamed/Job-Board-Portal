@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\fournisseur;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\fournisseur\company\CreateCompanyRequest;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,8 +17,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = Company::where('user_id',Auth::user()->id)->get();
-        return view('auth.profile.fournisseur.companies.index',compact("companies"));
+        $companies = Company::where('user_id', Auth::user()->id)->get();
+        return view('auth.profile.fournisseur.companies.index', compact("companies"));
     }
 
     /**
@@ -36,9 +37,20 @@ class CompanyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCompanyRequest $request)
     {
-        //
+        $company = Company::create([
+            'user_id' => auth()->user()->id,
+            'name' => $request->name,
+            'description' => $request->description,
+            'start_date' => $request->start_date,
+            'location' => $request->location,
+            'site_url' => $request->site_url,
+            'phone_number' => $request->phone_number,
+        ]);
+        return redirect()->back()->with([
+            "success" => "company created successfully"
+        ]);
     }
 
     /**
