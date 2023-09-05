@@ -20,7 +20,7 @@
                             <a href="/" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="about.html" class="nav-link">About</a>
+                            <a href="{{ route('announces.list') }}" class="nav-link">Annonces List</a>
                         </li>
                         {{-- <li class="nav-item">
                             <a href="#" class="nav-link dropdown-toggle">Jobs</a>
@@ -43,9 +43,6 @@
                                 </li>
                             </ul>
                         </li> --}}
-                        <li class="nav-item">
-                            <a href="contact.html" class="nav-link">Contact Us</a>
-                        </li>
                     </ul>
 
                     <div class="other-option">
