@@ -31,4 +31,10 @@ class HomeController extends Controller
         }
         return abort(404);
     }
+
+    public function AnnouncesList()
+    {
+        $annonces = Annonce::latest()->paginate(15);
+        return view('pages.AnnoncesList', compact('annonces'));
+    }
 }
