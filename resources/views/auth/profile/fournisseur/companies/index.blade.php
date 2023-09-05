@@ -32,7 +32,7 @@
                             Companies
                         </h3>
                         <div x-data="{ open: false }">
-                            <button @click="open = !open">Create New Companie</button>
+                            <button @click="open = !open" class="btn btn-success">Create New Companie</button>
 
                             <span x-show="open">
                                 <form class="-candidate-address" method="POST" action="{{ route('auth.companie.store') }}">
@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="account-btn">Save</button>
+                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
                                 </form>
