@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\user\Skill;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,7 @@ class SkillController extends Controller
     public function index()
     {
         $skills = Auth::user()->Skills;
-        return view('auth.profile.skills.index',compact('skills'));
+        return view('auth.profile.skills.index', compact('skills'));
     }
 
     /**
@@ -37,7 +38,16 @@ class SkillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            "name" => "required"
+        ]);
+        Skill::create([
+            "user_id" => auth()->user()->id,
+            "name" => $request->name
+        ]);
+        return redirect()->back()->with([
+            "success" => "skill added successfully"
+        ]);
     }
 
     /**

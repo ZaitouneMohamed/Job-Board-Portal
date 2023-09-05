@@ -32,10 +32,24 @@
                             Skills
                         </h3>
                         <div x-data="{ open: false }">
-                            <button @click="open = !open">Expand</button>
+                            <button @click="open = !open">Add New Skill</button>
 
                             <span x-show="open">
-                                Content...
+                                <form class="-candidate-address" method="POST" action="{{ route('auth.skills.store') }}">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>skill name *</label>
+                                                <input type="text" class="form-control" name="name"
+                                                    placeholder="skill name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </span>
                         </div>
                         @foreach ($skills as $item)
