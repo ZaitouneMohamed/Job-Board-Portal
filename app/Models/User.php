@@ -73,6 +73,11 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profile::class);
     }
+
+    public function Companies()
+    {
+        return $this->hasMany(Company::class);
+    }
     public function Experience()
     {
         return $this->hasMany(Experience::class);
