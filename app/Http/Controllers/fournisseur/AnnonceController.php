@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\fournisseur;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\fournisseur\Annonce\CreateAnnonceRequest;
 use App\Models\Annonce;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,9 +42,24 @@ class AnnonceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateAnnonceRequest $request)
     {
-        //
+        $annonce = Annonce::create([
+            'user_id' => auth()->user()->id,
+            'type' => 1,
+            'salary' => $request->salary,
+            'company_id' => $request->companie_id,
+            'title' => $request->title,
+            'slug' => Str::slug($request->title),
+            'description' => $request->description,
+            'requirement' => $request->requirement,
+            'location' => $request->location,
+            'statue' => 1,
+            'categorie_id' => $request->categorie_id,
+        ]);
+        return redirect()->back()->with([
+            "success" => "announce created successfully"
+        ]);
     }
 
     /**
@@ -53,7 +70,7 @@ class AnnonceController extends Controller
      */
     public function show($id)
     {
-        $announce = Annonce::with("categorie", "Companie","user")->findOrFail($id);
+        $announce = Annonce::with("categorie", "Companie", "user")->findOrFail($id);
         return view('pages.viewAnnonce', compact('announce'));
     }
 

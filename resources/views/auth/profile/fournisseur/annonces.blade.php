@@ -32,10 +32,80 @@
                             My Annonces
                         </h3>
                         <div x-data="{ open: false }">
-                            <button @click="open = !open">Expand</button>
-
+                            <button @click="open = !open" class="btn btn-success">Add New Announce</button>
                             <span x-show="open">
-                                Content...
+                                <form class="-candidate-address" method="POST" action="{{ route('auth.annonces.store') }}">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Title *</label>
+                                                <input type="text" class="form-control" name="title"
+                                                    placeholder="title">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Type *</label>
+                                                <input type="text" class="form-control" name="type"
+                                                    placeholder="type">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>salary *</label>
+                                                <input type="text" class="form-control" name="salary"
+                                                    placeholder="salary">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>companie *</label><br>
+                                                <select name="companie_id">
+                                                    <option value=""></option>
+                                                    @foreach (Auth::user()->Companies as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>categorie *</label><br>
+                                                <select name="categorie_id">
+                                                    <option value=""></option>
+                                                    @foreach (App\Models\Categorie::all() as $item)
+                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>description *</label>
+                                                <textarea name="description" name="description" placeholder="description here" id="" cols="30"
+                                                    rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>requirement *</label>
+                                                <textarea name="requirement" name="description" placeholder="description here" id="" cols="30"
+                                                    rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>location *</label>
+                                                <textarea name="location" name="description" placeholder="description here" id="" cols="30"
+                                                    rows="10"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="signin-btn">Save</button>
+                                        </div>
+                                    </div>
+                                </form>
                             </span>
                         </div>
                         <div class="row">
