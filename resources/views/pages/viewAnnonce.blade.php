@@ -126,8 +126,8 @@
                                             </a>
                                         @endif
                                     @else
-                                        <a href="{{ route('user.apply_job', $announce->id) }}" class="default-btn">
-                                            Apply Now
+                                        <a class="default-btn" href="{{ route('auth.login') }}">
+                                            Login Or Register
                                         </a>
                                     @endauth
                                 </div>
