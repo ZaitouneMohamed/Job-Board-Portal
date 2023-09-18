@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ControllersHomeController::class, 'index']);
+Route::get('/', [ControllersHomeController::class, 'index'])->name("index");
 
 
 Route::middleware(['auth', 'role:user'])->group(function () {
