@@ -9,37 +9,37 @@
 
             <ul>
                 <li>
-                    <a href="#" class="active">
+                    <a href="{{ route('auth.profile') }}" @if (Route::currentRouteName() == 'auth.profile') class="active" @endif>
                         <i class='bx bx-user'></i>
                         My Profile
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.experience.index') }}">
+                    <a href="{{ route('auth.experience.index') }}" @if (Route::currentRouteName() == 'auth.experience.index') class="active" @endif>
                         <i class='bx bxs-file-doc'></i>
                         Experience
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.education.index') }}">
+                    <a href="{{ route('auth.education.index') }}" @if (Route::currentRouteName() == 'auth.education.index') class="active" @endif>
                         <i class='bx bx-briefcase'></i>
                         Education
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.skills.index') }}">
+                    <a href="{{ route('auth.skills.index') }}" @if (Route::currentRouteName() == 'auth.skills.index') class="active" @endif>
                         <i class='bx bx-envelope'></i>
                         skills
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.applied') }}">
+                    <a href="{{ route('user.applied') }}" @if (Route::currentRouteName() == 'user.applied') class="active" @endif>
                         <i class='bx bx-heart'></i>
                         Aplied Jobs
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('user.favorites') }}">
+                    <a href="{{ route('user.favorites') }}" @if (Route::currentRouteName() == 'user.favorites') class="active" @endif>
                         <i class='bx bx-heart'></i>
                         Saved Jobs
                     </a>
@@ -78,19 +78,19 @@
 
             <ul>
                 <li>
-                    <a href="{{ route('auth.profile') }}" class="active">
+                    <a href="{{ route('auth.profile') }}" @if (Route::currentRouteName() == 'auth.profile') class="active" @endif>
                         <i class='bx bx-user'></i>
                         My Profile
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.companie.index') }}">
+                    <a href="{{ route('auth.companie.index') }}" @if (Route::currentRouteName() == 'auth.companie.index') class="active" @endif>
                         <i class='bx bx-user'></i>
                         My Companies
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('auth.annonces.index') }}">
+                    <a href="{{ route('auth.annonces.index') }}" @if (Route::currentRouteName() == 'auth.annonces.index') class="active" @endif>
                         <i class='bx bx-user'></i>
                         My Annonce
                     </a>
