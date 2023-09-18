@@ -1,25 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <section class="page-title title-bg10">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <h2>Account</h2>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>Experience</li>
-                </ul>
-            </div>
-        </div>
-        <div class="lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </section>
-    <!-- Page Title End -->
+    <x-Path pagename="pending annonces" />
     <!-- Account Area Start -->
     <section class="account-section ptb-100">
         <div class="container">
@@ -40,16 +22,7 @@
                                     <th scope="col">Categorie</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                @foreach ($annonces as $item)
-                                    <tr>
-                                        <th scope="row">{{ $item->id }}</th>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->created_at }}</td>
-                                        <td>{{ $item->categorie->name }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
+                            <x-User.jobs-list :annonces="$annonces" />
                         </table>
                     </div>
                 </div>
