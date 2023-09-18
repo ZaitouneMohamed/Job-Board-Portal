@@ -25,10 +25,8 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="candidate-social">
-                                <a href="#" target="_blank"><i class="bx bxl-facebook"></i></a>
-                                <a href="#" target="_blank"><i class="bx bxl-twitter"></i></a>
-                                <a href="#" target="_blank"><i class="bx bxl-linkedin"></i></a>
+                            <div class="candidate-social" style="border-radius: 50%">
+                                <a href="#" target="_blank" ><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
