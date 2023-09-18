@@ -30,6 +30,13 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     });
 });
 
+Route::middleware(['auth', 'role:fournisseur'])->group(function () {
+    Route::controller(FournisseurHomeController::class)->name("fournisseur.")->group(function () {
+        Route::get('/userOnAnnonce/{id}',"AppliedUsersOnAnnonce")->name("UserappliedOnAnnonce");
+        Route::get('/UsersSaveAnnonce/{id}',"UsersSaveAnnonce")->name("UsersSaveAnnonce");
+    });
+});
+
 Route::post('profile/set',ProfileController::class)->name("set.profile");
 
 Route::controller(ControllersHomeController::class)->group(function(){

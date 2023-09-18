@@ -123,10 +123,10 @@
                                                 <a style="color: black" href="#">{{ $item->categorie->name }}</a>
                                             </h5>
                                             <h5>
-                                                <a href="#" style="color: black">Applied : {{ $item->users->count() }}</a>
+                                                <a href="{{route('fournisseur.UserappliedOnAnnonce',$item->id)}}" style="color: black">Applied : {{ $item->users->count() }}</a>
                                             </h5>
                                             <h5>
-                                                <a href="#" style="color: black">Saved : {{ $item->FavoritesUsers->count() }}</</a>
+                                                <a href="{{route('fournisseur.UsersSaveAnnonce',$item->id)}}" style="color: black"><i class="fa fa-save" aria-hidden="true"></i> : {{ $item->FavoritesUsers->count() }}</</a>
                                             </h3>
                                             <ul>
                                                 <li>
