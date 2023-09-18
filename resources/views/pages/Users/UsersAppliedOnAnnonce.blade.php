@@ -13,7 +13,7 @@
                     <div class="col-lg-3 col-sm-6">
                         <div class="candidate-card">
                             <div class="candidate-img">
-                                <img src="assets/img/candidate/7.jpg" alt="candidate image">
+                                <img src="{{ asset('job-assets/assets/img/candidate/7.jpg') }}" alt="candidate image">
                             </div>
                             <div class="candidate-text">
                                 <h3>
