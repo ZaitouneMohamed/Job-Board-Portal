@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    @php
-        $messagee = $announce->title;
-    @endphp
-    <x-Path :pagename="$messagee" />
+    {{-- @php
+        $messagee = ;
+    @endphp --}}
+    <x-Path :pagename="$announce->title" />
 
     <!-- Job Details Section Start -->
     <section class="job-details ptb-100">
