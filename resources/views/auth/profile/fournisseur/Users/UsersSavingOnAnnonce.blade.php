@@ -26,7 +26,7 @@
                                 </ul>
                             </div>
                             <div class="candidate-social" style="border-radius: 50%">
-                                <a href="#" target="_blank" ><i class="fa fa-user-circle" aria-hidden="true"></i></a>
+                                <a href="{{route('fournisseur.UserProfile',$item->username)}}" target="_blank" ><i class="fa fa-user-circle" aria-hidden="true"></i></a>
                             </div>
                         </div>
                     </div>
