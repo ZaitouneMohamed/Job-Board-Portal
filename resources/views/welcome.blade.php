@@ -183,9 +183,9 @@
                                     <div class="job-save">
                                         <span>{{ $item->type }}</span>
                                         @auth
-                                            <a >
-                                                <i class='bx bx-heart' id="{{ $item->id }}"
-                                                    {{-- onclick="clickButton({{ $item->id }})" --}}
+                                            <a
+                                                href="{{ route('user.toggle.favorite', ['user_id'=> Auth::user()->id, 'announce_id'=> $item->id]) }}">
+                                                <i class='bx bx-heart' id="{{ $item->id }}" {{-- onclick="clickButton({{ $item->id }})" --}}
                                                     @if (auth()->user()->FavoriteAnnonces->contains($item->id)) style="background-color: red ;color: white" @endif>
                                                 </i>
                                             </a>
