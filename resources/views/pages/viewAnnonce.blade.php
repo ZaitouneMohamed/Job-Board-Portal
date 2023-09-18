@@ -1,26 +1,10 @@
 @extends('layouts.master')
 
 @section('content')
-    <!-- Page Title Start -->
-    <section class="page-title title-bg6">
-        <div class="d-table">
-            <div class="d-table-cell">
-                <h2>Job Details</h2>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>Job Details</li>
-                </ul>
-            </div>
-        </div>
-        <div class="lines">
-            <div class="line"></div>
-            <div class="line"></div>
-            <div class="line"></div>
-        </div>
-    </section>
-    <!-- Page Title End -->
+    @php
+        $messagee = $announce->title;
+    @endphp
+    <x-Path :pagename="$messagee" />
 
     <!-- Job Details Section Start -->
     <section class="job-details ptb-100">
