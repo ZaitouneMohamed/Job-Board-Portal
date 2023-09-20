@@ -118,7 +118,7 @@
             <div class="row">
                 @foreach ($topCategories as $item)
                     <div class="col-lg-3 col-md-4 col-sm-6">
-                        <a href="job-list.html">
+                        <a href="{{ route('annonce.categorie', $item->id) }}">
                             <div class="category-card">
                                 <i class='{{ $item->icon_class }}'></i>
                                 <h3>{{ $item->name }}</h3>
@@ -184,7 +184,7 @@
                                         <span>{{ $item->type }}</span>
                                         @auth
                                             <a
-                                                href="{{ route('user.toggle.favorite', ['user_id'=> Auth::user()->id, 'announce_id'=> $item->id]) }}">
+                                                href="{{ route('user.toggle.favorite', ['user_id' => Auth::user()->id, 'announce_id' => $item->id]) }}">
                                                 <i class='bx bx-heart' id="{{ $item->id }}" {{-- onclick="clickButton({{ $item->id }})" --}}
                                                     @if (auth()->user()->FavoriteAnnonces->contains($item->id)) style="background-color: red ;color: white" @endif>
                                                 </i>
