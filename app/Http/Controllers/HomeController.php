@@ -37,4 +37,9 @@ class HomeController extends Controller
         $annonces = Annonce::latest()->paginate(15);
         return view('pages.AnnoncesList', compact('annonces'));
     }
+    function GetAnnoncesOfCategorie($id)
+    {
+        $annonces = Annonce::where('categorie_id', $id)->paginate(10);
+        return view('pages.AnnoncesOfCategorie',compact("annonces"));
+    }
 }

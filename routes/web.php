@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [ControllersHomeController::class, 'index'])->name("index");
+// Route::get('/', [ControllersHomeController::class, 'index'])->name("index");
 
 
 Route::middleware(['auth', 'role:user'])->group(function () {
@@ -41,6 +41,8 @@ Route::middleware(['auth', 'role:fournisseur'])->group(function () {
 Route::post('profile/set', ProfileController::class)->name("set.profile");
 
 Route::controller(ControllersHomeController::class)->group(function () {
+    Route::get('/','index')->name("index");
     Route::get('/announces/{id}-{slug}', 'viewAnnonce')->name('announce.show');
+    Route::get('/Categorie/{id}', 'GetAnnoncesOfCategorie')->name('annonce.categorie');
     Route::get('/announcesList', 'AnnouncesList')->name('announces.list');
 });
