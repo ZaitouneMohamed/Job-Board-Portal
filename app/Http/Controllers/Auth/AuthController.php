@@ -29,7 +29,12 @@ class AuthController extends Controller
     public function login(LoginFormRequest $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->intended('/');
+            if (Auth::user()->hasRole('admin')) {
+                return redirect()->intended('/admin');
+            } else {
+                return redirect()->intended('/');
+            }
+
         } else {
             return redirect('/login')->with([
                 "error" => "these information do not match any one of our records"
