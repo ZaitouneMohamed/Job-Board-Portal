@@ -17,11 +17,15 @@ class RedirectAdminToLogin
      */
     public function handle(Request $request, Closure $next)
     {
+
         if (Auth::check()) {
-            return redirect()->back();
+            if (Auth::user()->hasRole('admin')) {
+                return $next($request);
+            }else {
+                return abort(403);
+            }
         } else {
             return redirect()->route('admin.login');
         }
-
     }
 }
