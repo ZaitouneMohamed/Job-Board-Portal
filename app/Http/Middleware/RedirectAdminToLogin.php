@@ -19,12 +19,8 @@ class RedirectAdminToLogin
     {
 
         if (Auth::check()) {
-            if (Auth::user()->hasRole('admin')) {
-                return $next($request);
-            }else {
-                return abort(403);
-            }
-        } else {
+            return $next($request);
+        }else {
             return redirect()->route('admin.login');
         }
     }
